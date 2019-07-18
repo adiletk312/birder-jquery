@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Birder</title>
         <link rel="stylesheet" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="scripts.js"></script>
     </head>
     <body>
@@ -19,13 +20,15 @@
                 <% } %>
             </div>
         </header>
-        <ul>
+        <ul id="twits">
+            <!--
             <% for (const twit of twits) { %>
                 <li><%= twit.message %></li>
             <% } %>
+            -->
         </ul>
         <% if (session.authorized) { %>
-            <form action="/" method="POST">
+            <form id="twitForm" action="/" method="POST">
                 <textarea name="message"></textarea><br>
                 <input type="submit" value="Twit">
             </form>

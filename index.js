@@ -55,7 +55,14 @@ app.use(express.static('public'));
 
 app.get('/', (request, response) => {
     Twit.findAll().then(results => {
-        response.render('index', { 'twits': results, 'session' : request.session });
+        response.format({
+            'text/html' : function() {
+                response.render('index', { 'twits': results, 'session' : request.session });
+            },
+            'application/json' : function() {
+                response.json(results);
+            }
+        });
     }).catch(error => {
         console.error(error);
         response.status(500).end();
